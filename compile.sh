@@ -239,6 +239,9 @@ if [ ! -d "vlc" ]; then
     git clone https://github.com/bwlfhu/vlc.git vlc
     checkfail "vlc source: git clone failed"
 fi
+chmod -R +x *.sh
+chmod -R +x bootstrap
+chmod +x vlc/make-alias
 diagnostic "VLC source found"
 
 
