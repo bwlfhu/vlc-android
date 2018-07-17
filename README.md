@@ -12,9 +12,11 @@ It should work with Windows 10, but no official support for this.
 Check our [AndroidCompile wiki page](https://wiki.videolan.org/AndroidCompile/)
 
 ## Build FAQ
-1.Error: syntax error near unexpected token `dlopen' #
-  Solution: autoreconf at vlc-android/vlc
-  if autoreconf error, try to do next:
+1.Error: syntax error near unexpected token `dlopen'                    
+  Solution: apt-get install libtool  #and#  autoreconf at vlc-android/vlc               
+  
+2.Error: cannot find input file: `doc/Makefile.in'               
+  Solution: try to do next:  
     autoheader \
     && aclocal \
     && libtoolize --ltdl --copy --force \
