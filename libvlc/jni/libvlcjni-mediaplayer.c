@@ -1186,3 +1186,65 @@ Java_org_videolan_libvlc_MediaPlayer_00024Equalizer_nativeSetAmp(JNIEnv *env,
 
     return libvlc_audio_equalizer_set_amp_at_index(p_eq, amp, index) == 0 ? true : false;
 }
+
+/* Add video record Begin */
+jint
+Java_org_videolan_libvlc_MediaPlayer_startVideoRecord(JNIEnv *env, jobject thiz,
+                                               jstring path)
+{
+    const char* psz_path;
+    vlcjni_object *p_obj = VLCJniObject_getInstance(env, thiz);
+
+    if (!p_obj)
+        return -1;
+
+    if (!path)
+    {
+        return -1;
+    }
+    if (!(psz_path = (*env)->GetStringUTFChars(env, path, 0)))
+    {
+        throw_IllegalArgumentException(env, "path invalid");
+        return -1;
+    }
+
+    jint ret = libvlc_media_player_record_start(p_obj->u.p_mp, psz_path);
+
+    (*env)->ReleaseStringUTFChars(env, path, psz_path);
+
+    return ret;
+}
+
+jint
+Java_org_videolan_libvlc_MediaPlayer_stopVideoRecord(JNIEnv *env, jobject thiz)
+{
+    vlcjni_object *p_obj = VLCJniObject_getInstance(env, thiz);
+
+    if (!p_obj)
+        return -1;
+
+    return libvlc_media_player_record_stop(p_obj->u.p_mp);
+}
+
+jboolean
+Java_org_videolan_libvlc_MediaPlayer_isVideoRecording(JNIEnv *env, jobject thiz)
+{
+    vlcjni_object *p_obj = VLCJniObject_getInstance(env, thiz);
+
+    if (!p_obj)
+        return false;
+
+    return !!libvlc_media_player_is_recording(p_obj->u.p_mp);
+}
+
+jboolean
+Java_org_videolan_libvlc_MediaPlayer_isVideoRecordable(JNIEnv *env, jobject thiz)
+{
+    vlcjni_object *p_obj = VLCJniObject_getInstance(env, thiz);
+
+    if (!p_obj)
+        return false;
+
+    return !!libvlc_media_player_is_recordable(p_obj->u.p_mp);
+}
+/* Add video record End */

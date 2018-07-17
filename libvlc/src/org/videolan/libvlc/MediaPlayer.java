@@ -1072,6 +1072,27 @@ public class MediaPlayer extends VLCObject<MediaPlayer.Event> {
         return addSlave(type, Uri.fromFile(new File(path)), select);
     }
 
+
+    /**
+     * start Video Record, and save file to {#path}
+     */
+    public native int startVideoRecord(String path);
+
+    /**
+     * stop Video Record
+     */
+    public native int stopVideoRecord();
+
+    /**
+     * check if recording
+     */
+    public native boolean isVideoRecording();
+
+    /**
+     * check if recordable
+     */
+    public native boolean isVideoRecordable();
+
     /**
      * Sets the speed of playback (1 being normal speed, 2 being twice as fast)
      *
