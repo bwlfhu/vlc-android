@@ -239,20 +239,18 @@ if [ ! -d "vlc" ]; then
     git clone https://github.com/bwlfhu/vlc.git vlc
     checkfail "vlc source: git clone failed"
 	
-	chmod +x *.sh
+    chmod +x *.sh
     chmod +x vlc/bootstrap
-	chmod +x vlc/configure
     chmod +x vlc/make-alias
-	chmod +x vlc/autotools/*
-	chmod +x vlc/contrib/bootstrap
-	chmod +x vlc/contrib/src/*.sh
-	chmod +x vlc/doc/*.sh
-	chmod +x vlc/extra/tools/bootstrap
-	chmod +x vlc/libltdl/config/*
-	chmod +x vlc/modules/*.sh
-	chmod +x vlc/share/utils/*.sh
-	chmod +x vlc/src/check_*
-	chmod +x vlc/test/*.sh
+    chmod +x vlc/autotools/*
+    chmod +x vlc/contrib/bootstrap
+    chmod +x vlc/contrib/src/*.sh
+    chmod +x vlc/doc/*.sh
+    chmod +x vlc/extras/tools/bootstrap
+    chmod +x vlc/modules/*.sh
+    chmod +x vlc/share/utils/*.sh
+    chmod +x vlc/src/check_*
+    chmod +x vlc/test/*.sh
 fi
 diagnostic "VLC source found"
 
